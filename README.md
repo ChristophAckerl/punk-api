@@ -1,8 +1,9 @@
 # React SPA Punk-API
 
 Used:
-React
-TypeScript
-SCSS
-Axios
-MaterialUI
+
+- React
+- TypeScript
+- SCSS
+- Axios
+- MaterialUI
