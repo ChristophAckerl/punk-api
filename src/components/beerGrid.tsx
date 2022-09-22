@@ -48,6 +48,8 @@ function BeerGrid() {
     });
   }, []);
 
+  console.log(beers);
+
   return (
     <React.Fragment>
       <BeerSwitch checked={checked} func={handleChange} />
@@ -57,35 +59,37 @@ function BeerGrid() {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {beers.map((beer: IBeer) => {
-            if (checked && beer.abv >= 5) {
-              return (
-                <Grid item xs={4} sm={4} md={4} key={beer.id}>
-                  <BeerCard
-                    name={beer.name}
-                    tagline={beer.tagline}
-                    description={beer.description}
-                    image_url={beer.image_url}
-                    food_pairing={beer.food_pairing[0]}
-                  />
-                </Grid>
-              );
-            } else if (!checked && beer.abv < 5) {
-              return (
-                <Grid item xs={4} sm={4} md={4} key={beer.id}>
-                  <BeerCard
-                    name={beer.name}
-                    tagline={beer.tagline}
-                    description={beer.description}
-                    image_url={beer.image_url}
-                    food_pairing={beer.food_pairing[0]}
-                  />
-                </Grid>
-              );
-            } else {
-              return null;
-            }
-          })}
+          {checked
+            ? beers.map((beer: IBeer) => {
+                if (beer.abv >= 5) {
+                  return (
+                    <Grid item xs={4} sm={4} md={4} key={beer.id}>
+                      <BeerCard
+                        name={beer.name}
+                        tagline={beer.tagline}
+                        description={beer.description}
+                        image_url={beer.image_url}
+                        food_pairing={beer.food_pairing[0]}
+                      />
+                    </Grid>
+                  );
+                } else return null;
+              })
+            : beers.map((beer: IBeer) => {
+                if (beer.abv < 5) {
+                  return (
+                    <Grid item xs={4} sm={4} md={4} key={beer.id}>
+                      <BeerCard
+                        name={beer.name}
+                        tagline={beer.tagline}
+                        description={beer.description}
+                        image_url={beer.image_url}
+                        food_pairing={beer.food_pairing[0]}
+                      />
+                    </Grid>
+                  );
+                } else return null;
+              })}
         </Grid>
       </Box>
     </React.Fragment>
