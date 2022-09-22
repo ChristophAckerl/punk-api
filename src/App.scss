@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {
@@ -34,5 +39,17 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.MuiGrid-item {
+  .detailsHeading {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+
+    :nth-child(1) {
+      margin-top: 10rem;
+    }
   }
 }
