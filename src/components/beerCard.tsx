@@ -45,6 +45,7 @@ function BeerCard({
 }: IBeerProps) {
   const [expanded, setExpanded] = useState(false);
 
+  //Handle the expand button
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };

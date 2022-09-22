@@ -16,13 +16,16 @@ interface IBeer {
   food_pairing: string;
   abv: number;
 }
-
+//BASE URL for the Punk API
 const PUNK_BASE_URL = "https://api.punkapi.com/v2/beers";
 
+//Array to select which IDs to fetch from the API
 const beerIdArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
+//String buffer for future use
 let beersToGet: string = "";
 
+//Function to create the string of IDs to fetch from the API based on the Array;
 function stringifyBeerIdArr() {
   beersToGet = beerIdArr.join("|");
 }
@@ -33,11 +36,13 @@ function BeerGrid() {
   const [beers, setBeers] = useState([]);
   const [checked, setChecked] = React.useState(false);
 
+  //Handle the switch change
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
   };
 
   useEffect(() => {
+    //Fetch the beers from the API
     axios.get(`${PUNK_BASE_URL}?ids=${beersToGet}`).then((response) => {
       setBeers(response.data);
     });
