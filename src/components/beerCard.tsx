@@ -25,6 +25,7 @@ interface IBeerProps {
   food_pairing: string;
 }
 
+//Predefined style for the expand button by Material UI
 const ExpandMore = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;

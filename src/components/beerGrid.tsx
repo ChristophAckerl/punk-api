@@ -48,8 +48,6 @@ function BeerGrid() {
     });
   }, []);
 
-  console.log(beers);
-
   return (
     <React.Fragment>
       <BeerSwitch checked={checked} func={handleChange} />
@@ -60,8 +58,11 @@ function BeerGrid() {
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {checked
-            ? beers
+            ? //Checks if the switch is on or off
+              beers
+                //Filter the beers based on the ABV
                 .filter((beer: IBeer) => beer.abv >= 5)
+                //Map the filtered beers to the BeerCard component
                 .map((beer: IBeer) => {
                   return (
                     <Grid item xs={4} sm={4} md={4} key={beer.id}>
