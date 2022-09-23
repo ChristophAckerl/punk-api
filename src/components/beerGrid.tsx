@@ -60,8 +60,9 @@ function BeerGrid() {
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {checked
-            ? beers.map((beer: IBeer) => {
-                if (beer.abv >= 5) {
+            ? beers
+                .filter((beer: IBeer) => beer.abv >= 5)
+                .map((beer: IBeer) => {
                   return (
                     <Grid item xs={4} sm={4} md={4} key={beer.id}>
                       <BeerCard
@@ -73,10 +74,10 @@ function BeerGrid() {
                       />
                     </Grid>
                   );
-                } else return null;
-              })
-            : beers.map((beer: IBeer) => {
-                if (beer.abv < 5) {
+                })
+            : beers
+                .filter((beer: IBeer) => beer.abv < 5)
+                .map((beer: IBeer) => {
                   return (
                     <Grid item xs={4} sm={4} md={4} key={beer.id}>
                       <BeerCard
@@ -88,8 +89,7 @@ function BeerGrid() {
                       />
                     </Grid>
                   );
-                } else return null;
-              })}
+                })}
         </Grid>
       </Box>
     </React.Fragment>
